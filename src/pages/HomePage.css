@@ -1,0 +1,213 @@
+body {
+  background: linear-gradient(135deg, #fffde7, #fff8e1);
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.homepage-wrapper {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Title styling */
+.homepage-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* Header-style top bar with filters, add task, and actions */
+.top-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+/* Filters styling */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Add task form styling */
+.add-task {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Actions button styling */
+.action-drawer-button {
+  display: flex;
+  align-items: center;
+}
+
+.action-drawer-button button {
+  padding: 0.6rem 1.2rem;
+  background-color: #f9a825;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.action-drawer-button button:hover {
+  background-color: #f57f17;
+}
+
+/* Inputs and selects */
+.add-task input,
+.add-task select,
+.filters select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+.add-task button {
+  padding: 0.6rem 1.2rem;
+  background-color: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.add-task button:hover {
+  background-color: #1565c0;
+}
+
+/* Search bar centered just above the task list */
+.search-bar-centered {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.search-bar-centered input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 60%;
+  max-width: 500px;
+  font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Task card layout */
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* Bulk drawer styles */
+.bulk-drawer {
+  position: fixed;
+  top: 0.3rem;
+  right: -320px;
+  width: 300px;
+  max-height: 400px;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-left: 1px solid #ddd;
+  border-radius: 8px 0 0 8px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+}
+
+.bulk-drawer.open {
+  right: 0;
+}
+
+.bulk-drawer h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.bulk-drawer button {
+  padding: 0.5rem;
+  border: none;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.bulk-drawer button:hover {
+  background-color: #1565c0;
+}
+
+.bulk-drawer .close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.bulk-drawer .danger {
+  background-color: #e53935;
+}
+
+.bulk-drawer .danger:hover {
+  background-color: #c62828;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+  .top-bar-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters,
+  .add-task,
+  .action-drawer-button {
+    justify-content: center;
+  }
+
+  .search-bar-centered input {
+    width: 90%;
+  }
+
+  .bulk-drawer {
+    width: 90%;
+    max-width: 320px;
+    right: -100%;
+    padding: 1.5rem;
+  }
+
+  .bulk-drawer.open {
+    right: 0;
+  }
+}
