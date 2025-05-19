@@ -96,21 +96,63 @@ body {
   background-color: #1565c0;
 }
 
-/* Search bar centered just above the task list */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  /* vertically center */
+  margin-bottom: 1rem;  /* optional spacing below */
+}
+
+.goto-tweets button {
+  padding: 8px 16px;
+  background-color: #1976d2; /* a nice blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.goto-tweets button:hover {
+  background-color: #1565c0;
+}
+
+
 .search-bar-centered {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  align-items: center; /* vertical align */
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.search-bar-centered input,
+.search-bar-centered button {
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 .search-bar-centered input {
-  padding: 0.6rem 1rem;
+  width: 300px;
+  padding: 0 12px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  width: 60%;
-  max-width: 500px;
-  font-size: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.search-bar-centered button {
+  padding: 0 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar-centered button:hover {
+  background-color: #0056b3;
 }
 
 /* Task card layout */
@@ -118,6 +160,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 /* Bulk drawer styles */

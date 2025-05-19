@@ -1,3 +1,4 @@
+import React from 'react';
 import { Task } from '../features/tasks/taskTypes';
 import { useAppDispatch } from '../hooks';
 import { toggleTask, deleteTask } from '../features/tasks/taskSlice'; // Redux actions to complete & delete
@@ -26,13 +27,13 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   // Delete task handler
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevents bubbling up to parent element
-    dispatch(deleteTask(task.id));  // Dispatch delete action
+    dispatch(deleteTask({ id: task.id }));  // Dispatch delete action
   };
 
   // Toggle complete/incomplete
   const handleCheckboxToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation(); // Prevent card click when checking the box
-    dispatch(toggleTask(task.id));  // Toggle task completion
+    dispatch(toggleTask({ id: task.id, completed: !task.completed }));  // Toggle task completion
   };
 
   return (

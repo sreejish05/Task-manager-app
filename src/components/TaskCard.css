@@ -32,6 +32,30 @@
   height: 20px;
 }
 
+.tweet-card {
+  border: 1px solid #ccc;
+  background-color: #f0f0f0; /* light grey background */
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.tweet-username {
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+}
+
+.tweet-text {
+  margin: 0 0 0.5rem 0;
+}
+
+.tweet-date {
+  font-size: 0.8rem;
+  color: #555;
+  margin: 0;
+}
+
+
 .delete-btn {
   position: absolute;
   top: 16px;
