@@ -1,7 +1,7 @@
 import React from 'react';
-import { Task } from '../features/tasks/taskTypes';
+import { Task } from '../features/tasks/taskSlice';
 import { useAppDispatch } from '../hooks';
-import { toggleTask, deleteTask } from '../features/tasks/taskSlice'; // Redux actions to complete & delete
+import { toggleCompleteAsync, deleteTodoAsync } from '../features/tasks/taskSlice'; // Redux actions to complete & delete
 import './TaskCard.css';
 import { useNavigate } from 'react-router-dom'; // For dynamic routing
 import { useRef } from 'react';
@@ -27,18 +27,18 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   // Delete task handler
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevents bubbling up to parent element
-    dispatch(deleteTask({ id: task.id }));  // Dispatch delete action
+    dispatch(deleteTodoAsync({ id: task.id }));  // Dispatch delete action
   };
 
   // Toggle complete/incomplete
   const handleCheckboxToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation(); // Prevent card click when checking the box
-    dispatch(toggleTask({ id: task.id, completed: !task.completed }));  // Toggle task completion
+    dispatch(toggleCompleteAsync({ id: task.id, completed: !task.completed }));  // Toggle task completion
   };
 
   return (
     <div
-      className={`task-card ${task.completed ? 'completed' : ''}`}  //for style
+      className={`task-card ${task.completed ? 'completed' : ''}`}  
       onClick={handleCardClick}
     >
       {/* Checkbox to mark complete/incomplete */}

@@ -1,28 +1,26 @@
-import React, { useState } from 'react';
-import { useAppSelector/*, useAppDispatch*/ } from '../hooks';
+import React, { useState , useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from '../hooks';
 import TaskCard from '../components/TaskCard';
-// import {
-//   addTask,
-//   markAllCompleted,
-//   markAllIncomplete,
-//   deleteCompleted,
-//   clearAllTasks,
-// } from '../features/tasks/taskSlice';
 import './HomePage.css';
 import AddTask from '../components/AddTask';
 import SearchTask from '../components/SearchTask';
 import CompletedTask from '../components/CompletedTask';
 import { useNavigate } from 'react-router-dom';
+import { getTodosAsync, markAllCompletedAsync, markAllIncompleteAsync, deleteCompletedAsync, clearAllTasksAsync} from '../features/tasks/taskSlice';
 
 
 const HomePage: React.FC = () => {
   
-//  const [isDrawerOpen, setIsDrawerOpen] = useState(false);  //drawer toggle
+const [isDrawerOpen, setIsDrawerOpen] = useState(false);  //drawer toggle
 
 const navigate = useNavigate();
 
   const tasks = useAppSelector((state) => state.tasks); // Get all tasks from Redux
-  //const dispatch = useAppDispatch();  // Dispatch actions
+  const dispatch = useAppDispatch();  // Dispatch actions
+
+  useEffect(() => {
+		dispatch(getTodosAsync());
+	}, [dispatch]);
 
   const [statusFilter, setStatusFilter] = useState<'all' | 'completed' | 'pending'>('all');
   const [priorityFilter, setPriorityFilter] = useState<'all' | 'Low' | 'Medium' | 'High'>('all');
@@ -67,14 +65,13 @@ const navigate = useNavigate();
             <option value="High">High</option>
           </select>
         </div>
-      </div>
-      {/* add task component*/}
-      <AddTask/>
 
-        {/* <div className="action-drawer-button">
+        {/* add task component*/}
+        <AddTask/>
+        <div className="action-drawer-button">
           <button onClick={() => setIsDrawerOpen(true)}>Actions</button>
         </div>
-      </div> */}
+      </div>
 
       {/* search task */}
       <SearchTask
@@ -106,18 +103,18 @@ const navigate = useNavigate();
         )}
       </div>
 
-      {/* {isDrawerOpen && (
+      {isDrawerOpen && (
         <div className={`bulk-drawer ${isDrawerOpen ? 'open' : ''}`}>
           <button className="close-button" onClick={() => setIsDrawerOpen(false)}>×</button>
           <h2>Actions</h2>
-          <button onClick={() => dispatch(markAllCompleted())}>Mark All as Completed</button>
-          <button onClick={() => dispatch(markAllIncomplete())}>Mark All as Incomplete</button>
-          <button onClick={() => dispatch(deleteCompleted())}>Delete Completed</button>
-          <button className="danger" onClick={() => dispatch(clearAllTasks())}>
+          <button onClick={() => dispatch(markAllCompletedAsync())}>Mark All as Completed</button>
+          <button onClick={() => dispatch(markAllIncompleteAsync())}>Mark All as Incomplete</button>
+          <button onClick={() => dispatch(deleteCompletedAsync())}>Delete Completed</button>
+          <button className="danger" onClick={() => dispatch(clearAllTasksAsync())}>
             Clear All Tasks
           </button>
         </div>
-      )} */}
+      )}
     </div>
   );
 };

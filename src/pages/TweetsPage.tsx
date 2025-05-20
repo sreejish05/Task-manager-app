@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SearchButton from '../components/SearchButton'; 
 import TweetCard from '../components/TweetCard';
 import TweetStats from '../components/TweetStats';
-import { tweetsOptions, fetchData } from '../api/fetchData';
+import { tweetsOptions, fetchData } from '../api/fetchData'; 
 
 interface Tweet {
   text: string;

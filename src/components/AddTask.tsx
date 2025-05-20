@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTask } from '../features/tasks/taskSlice';
+import { useAppDispatch } from '../hooks';
+import { addTodoAsync } from '../features/tasks/taskSlice';
 import '../pages/HomePage.css';
 
 
 const AddTask = () => {
 
-const dispatch = useDispatch();  // Dispatch actions
+const dispatch = useAppDispatch();  // Dispatch actions
   // Controlled input states for the new task form
   const [newTaskTitle, setNewTaskTitle] = useState(''); 
   const [newTaskDescription, setNewTaskDescription] = useState('');
@@ -16,11 +16,11 @@ const dispatch = useDispatch();  // Dispatch actions
   const handleAddTask = () => {
     if (newTaskTitle.trim()) {
       dispatch(
-        addTask({
-          id: Date.now(),  // Unique ID from timestamp
+        addTodoAsync({
+          //id: Date.now(),  // Unique ID from timestamp
           title: newTaskTitle,
           description: newTaskDescription,
-          completed: false,
+          //completed: false,
           priority: newTaskPriority,
         })
       );
